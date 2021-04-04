@@ -1,0 +1,46 @@
+.chat__dialog-input {
+    margin: 20px;
+    &-area {
+        border: 1px solid #f7f7f7;
+    }
+    & > div:first-of-type {
+        display: flex;
+    }
+    .chat-input__attachments {
+        padding: 15px 40px 0px;
+    }
+    .chat-input__smile-btn {
+        opacity: 0.5;
+        font-size: 20px;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .chat-input__actions {
+        opacity: 0.5;
+        cursor: pointer;
+        display: flex;
+        font-size: 20px;
+        align-items: center;
+        margin-right: 5px;
+        width: 60px;
+        justify-content: space-between;
+        &:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+    Input:focus,
+    Input {
+        border: 0;
+        box-shadow: none;
+        word-break: break-all!important;
+    }
+}
+
+.chat-input__emoji-picker {
+    position: absolute;
+    bottom: 76px;
+    z-index: 1;
+}

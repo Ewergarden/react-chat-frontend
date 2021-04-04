@@ -1,23 +1,24 @@
+import React from 'react';
+import {Auth} from 'pages';
+import {Route, Switch} from "react-router-dom";
+import Home from "./pages/Home/Home";
+import {connect} from "react-redux";
+import {Redirect} from "react-router";
 
-function App() {
+
+
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Switch>
+        <div className="wrapper">
+            <Switch>
+            <Route exact path={['/register','/login','/success']} component={Auth}/>
+            <Route path='/' render={() => (props.isAuth ? <Home /> : <Redirect to='/login' />)}/>
+            </Switch>
+        </div>
+      </Switch>
   );
 }
 
-export default App;
+export default  connect(({userReducer}) => ({isAuth: userReducer.isAuth}))(App);
+

@@ -1,0 +1,99 @@
+.chat {
+  height: 100%;
+  background-color: #fff;
+  width: 1140px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.04204);
+  display: flex;
+  .chat__sidebar {
+    border-right: 1px solid #f7f7f7;
+    width: 320px;
+    .chat__sidebar-header {
+      border-bottom: 1px solid #f7f7f7;
+      margin-bottom: 20px;
+      .chat__sidebar-header-ico {
+        .icon {
+          display: inline-block;
+          margin-right: 5px;
+        }
+      }
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      span {
+      }
+    }
+
+    .chat__sidebar-search {
+      padding: 0 20px 20px 20px;
+      .ant-input {
+        background-color: #f7F8F9;
+        border: 0;
+        height: 38px;
+        padding: 4px 11px 6px;
+      }
+    }
+
+    .chat__sidebar-dialogs {
+      height: calc(100% - 136px);
+      .dialogs {
+        height: 100%;
+        overflow: auto;
+      }
+    }
+  }
+
+  .chat__dialogs {
+    flex: 1;
+    .chat__dialog-message {
+
+      overflow: auto;
+      height: calc(100% - 151px);
+    }
+    .chat__dialog-header {
+      padding: 11px;
+      border-bottom: 1px solid #f7f7f7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .chat__dialog-header-center {
+        text-align: center;
+        b.chat__dialog-header-username {
+          font-weight: bold;
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        .chat__dialog-header-status {
+          position: relative;
+          display: inline-block;
+          color: #D4D4D4;
+          //&::before {
+          //  display: block;
+          //  content: '';
+          //  width: 6px;
+          //  height: 6px;
+          //  border-right: 30px;
+          //  background-color: crimson;
+          //  border-radius: 50px;
+          //}
+          .status--online {
+            &::before {
+              position: absolute;
+              display: block;
+              content: '';
+              width: 6px;
+              height: 6px;
+              border-right: 30px;
+              background-color: greenyellow;
+              border-radius: 50px;
+              bottom: 0;
+              margin-left: -8px;
+              margin-bottom: 1px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

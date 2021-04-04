@@ -1,0 +1,11 @@
+.message__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.chat__dialog-message {
+
+  overflow: auto;
+}
