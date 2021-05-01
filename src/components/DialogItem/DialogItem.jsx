@@ -31,24 +31,23 @@ const getMessageTime = created_at => {
 }
 
 
-const DialogItem = ({_id,partner,userId, isMe,avatar,onSelect,lastMessage}) => {
-    debugger
+const DialogItem = ({_id,showMenu,partner,user,author, isMe,onSelect,lastMessage}) => {
     return (
-        <Link to={`/dialog/${_id}`} onClick={onSelect.bind(this, _id)}  >
-        <div  className={classNames("dialogs__item", 'active', {"dialogs__item--online": partner.isOnline})}>
+        <Link to={`/dialog/${_id}`} onClick={onSelect.bind(this, _id)} onClick={showMenu}   >
+        <div  className={classNames("dialogs__item", {'active':onSelect === onSelect.bind(this, _id)}, {"dialogs__item--online": partner.isOnline})}>
             <div className="dialogs__item-avatar">
-                {getAvatar(partner.avatar || avatar )}
+                {getAvatar(isMe ? partner.avatar : author.avatar)}
             </div>
             <div className={'dialogs__item-info'}>
                 <div className="dialogs__item-info-top">
 
-                    <b>{partner.fullname}</b>
+                    <b>{isMe ? partner.fullname : author.fullname }</b>
                     <span>
                         {getMessageTime(parseISO(lastMessage.createdAt))}
                     </span>
                 </div>
                 <div className="dialogs__item-info-bottom">
-                    <p>{isMe=true ? `Вы: ${lastMessage.text}`: lastMessage.text} </p>
+                    <p>{lastMessage.user._id === user._id  ? `Вы: ${lastMessage.text|| "Фаил"}`: lastMessage.text || "Фаил"} </p>
                     {isMe && <IconRead isMe={true} isReaded={false}/> }
                     {lastMessage.unreaded > 0 && <div className="dialogs__item-info-bottom-count">
                         {lastMessage.unreaded}

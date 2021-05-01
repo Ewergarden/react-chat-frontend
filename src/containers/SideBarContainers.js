@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import UserAPI from "../utils/api/UserAPI";
 import DialogsAPI from "../utils/api/DialogsAPI";
 
-const SideBarContainers = () => {
+const SideBarContainers = (props) => {
     const [visible,setVisible] = useState(false);
     const [inputValue,setInputValue] = useState('');
     const [users,setUsers] = useState([]);
@@ -47,10 +47,10 @@ const SideBarContainers = () => {
     }
 
     return (
-        <SideBar messageText={messageText} onChangeTextArea={onChangeTextArea} onAddDialog={onAddDialog} onAddDialog={onAddDialog} isLoading={isLoading} users={users} onSearch={onSearch} onSelect={onSelect}  onChangeInput={handleChangeInput} inputValue={inputValue} visible={visible} onClose={onClose} onShow={() => {setVisible(true)}}/>
+        <SideBar showMenu={props.showMenu} menuActive={props.menuActive} messageText={messageText} onChangeTextArea={onChangeTextArea} onAddDialog={onAddDialog} onAddDialog={onAddDialog} isLoading={isLoading} users={users} onSearch={onSearch} onSelect={onSelect}  onChangeInput={handleChangeInput} inputValue={inputValue} visible={visible} onClose={onClose} onShow={() => {setVisible(true)}}/>
     );
 };
 
-export default connect(({userReducer}) => ({userReducer: userReducer.data})
+export default  connect(({userReducer}) => ({userReducer: userReducer.data})
 
 )(SideBarContainers);

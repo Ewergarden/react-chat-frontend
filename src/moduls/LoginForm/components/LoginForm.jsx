@@ -61,8 +61,8 @@ const LoginForm = (props) => {
 
 
                     >
-                        <Input size={"large"} placeholder="Введите логин" onChange={handleChange} onBlur={handleBlur}
-                               id='email' value={values.name}/>
+                        <Input  size={"large"} placeholder="Введите логин" onChange={handleChange} onBlur={handleBlur}
+                               id='email' style={{backgroundColor:"#2A2A2A",border:"none",color:"#fff"}} value={values.name}/>
                     </Form.Item>
 
 
@@ -72,7 +72,7 @@ const LoginForm = (props) => {
 
 
                     >
-                        <Input.Password size={"large"} placeholder="Введите пароль" onChange={handleChange}
+                        <Input  style={{backgroundColor:"#2A2A2A",border:"none",color:"#fff"}} size={"large"} placeholder="Введите пароль" onChange={handleChange}
                                         onBlur={handleBlur} id='password' value={values.password}/>
                     </Form.Item>
 

@@ -13,7 +13,7 @@ const FormField = ({size,name,placeholder,touched,errors,values,handleChange,han
 
 
         >
-            <Input size={size} placeholder={placeholder} onChange={handleChange} onBlur={handleBlur}
+            <Input size={size} style={{backgroundColor:"#2A2A2A",border:"none",color:"#fff"}} placeholder={placeholder} onChange={handleChange} onBlur={handleBlur}
                    id={name} value={values[name]}/>
         </Form.Item>
     );

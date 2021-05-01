@@ -7,26 +7,26 @@ import {DialogItem} from "../index";
 import {orderBy} from "lodash";
 const { Search } = Input;
 
-const Dialogs = ({items, userId, onSearch, inputValue,setCurrentDialog}) => {
-    debugger
+const Dialogs = ({items,showMenu, userId, onSearch, inputValue,setCurrentDialog,user}) => {
     return (
         <div className="dialogs">
             <div className="chat__sidebar-search">
-                <Search placeholder="Поиск среди контактов"  style={{ width: 280 }} onChange={e => onSearch(e.target.value)} value={inputValue} />
+                <Search placeholder="Поиск среди контактов"  style={{ width: 280,backgroundColor:"#2A2A2A",border:"none",color:"#fff" }} onChange={e => onSearch(e.target.value)} value={inputValue} />
             </div>
             {items.length ? orderBy(items,['created_at'],['desc']).map(item => (
 
                 <DialogItem
                     key={item._id}
                     _id={item._id}
-                    user={item.user}
                     partner={item.partner}
                     message={item}
                     unreaded={0}
+                    showMenu={showMenu}
                     date={item.date}
-                    userId={userId}
+                    user={user}
                     avatar={item.avatar}
-                    isMe={item.lastMessage.user.id === item.author.id }
+                    author={item.author}
+                    isMe={user && user._id ===  item.author._id }
                     onSelect={setCurrentDialog}
                     onSearch = {onSearch}
                     lastMessage={item.lastMessage}

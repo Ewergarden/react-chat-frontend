@@ -34,13 +34,13 @@ const RegisterForm = (props) => {
                 <h2>Регистрация</h2>
                 <p>Для входа в чат, вам нужно зарегистрироваться</p>
             </div>
-            <WhiteBlock>
+            <WhiteBlock >
                 {success ? <Form
                     {...layout}
                     name="RegisterForm"
                     onSubmit={handleSubmit}
                 >
-                    <FormField size='large' name='fullname' handleBlur={handleBlur} handleChange={handleChange} touched={touched} errors={errors}  values={values} placeholder='Введите ваше имя' />
+                    <FormField  size='large' name='fullname' handleBlur={handleBlur} handleChange={handleChange} touched={touched} errors={errors}  values={values} placeholder='Введите ваше имя' />
                     <FormField size='large' name='email' handleBlur={handleBlur} handleChange={handleChange} touched={touched} errors={errors}  values={values} placeholder='Введите ваш эмеил' />
                     <FormField size='large' name='password' handleBlur={handleBlur} handleChange={handleChange} touched={touched} errors={errors}  values={values} placeholder='Введите ваш пароль' />
 

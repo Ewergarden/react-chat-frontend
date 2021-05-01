@@ -3,13 +3,15 @@
   display: flex;
   max-width: 440px;
 
+
   &__avatar {
     display: flex;
     flex-direction: column-reverse;
-    margin-top: 20px;
+    margin-top: 25px;
+    flex: 0 0 33px;
 
     img {
-      width: 33px;
+      max-width: 33px;
       height: 33px;
       border-radius: 50px;
       margin-right: 13px;
@@ -18,8 +20,7 @@
   }
 
   &__buble {
-    background: #3674ff;
-    box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.196733);
+    background: #383F44;
     border-radius: 12px 12px 12px 0px;
     padding: 15px;
     margin-bottom: 8px;
@@ -43,16 +44,23 @@
   &__isMe {
     display: flex;
     flex-direction: row-reverse;
-    margin-left: 50%;
+    margin-left: auto;
+    .message__date {
+      float: right;
+    }
+    .message__buble {
+      border-radius: 12px 12px 0px 12px;
+    }
   }
 
+
   &__buble-me {
-    background: #fff;
+    background: #99FFCC;
     max-width: 250px;
-    border: 1px solid #ececec;
+    position: relative;
+    display: inline-block;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.0220444);
     border-radius: 12px 12px 0px 12px;
-
     p {
       color: black;
       word-break: break-all;
@@ -70,9 +78,11 @@
     }
   }
 
-  &__isMe-avatar {
+  .message__avatar__isMe {
     margin-left: 10px;
-    margin-bottom: 5px;
+    img {
+      margin-top: 5px;
+    }
   }
 
   &__isMe-content {
@@ -85,11 +95,10 @@
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
-    margin-left: 10px;
   }
 
   &__attachments-item {
-    margin-right: 10px;
+    margin-bottom: 5px;
     cursor: pointer;
 
     img {
@@ -99,9 +108,6 @@
     }
   }
 
-  span {
-    float: right;
-  }
 
 
   &__typing {
@@ -150,6 +156,13 @@
 
 .message__image-one {
   .message__attachments-item {
+    position: relative;
+    .message__attachments-item-prev {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0.5;
+    }
     img {
       width: 150px;
       height: 150px;
@@ -163,13 +176,20 @@
 }
 
 .message__is-audio {
-  position: relative;
+
   .message__buble {
     width: 250px;
     position: relative;
     overflow: hidden;
+    background: #383F44;
   }
+  .message__buble-me {
+    background: #99FFCC;
+  }
+
+
     .message__audio {
+
       audio {
         display: none;
       }
@@ -187,14 +207,15 @@
             width: 28px;
             height: 28px;
             border-radius: 30px;
-            background: #4e3d53;
+            background: black;
             img {
-
+              width: 15px;
+              height: 15px;
             }
           }
        }
       &-duration {
-        color: white;
+        color: black;
         font-weight: 500;
         opacity: 0.5;
         font-size: 12px;
@@ -203,18 +224,55 @@
         left: 0;
         top: 0;
         height: 100%;
-        background-color: #3282b8;
+        background-color: #00FF99;
         position: absolute;
         transition: width 0.5s ease;
       }
     }
 }
 
+.message__audio-me {
+  flex-direction: row-reverse;
+
+}
+
+@media screen and (max-width: 400px) {
+  .message__buble {
+    max-width: 210px;
+  }
+}
+
 
 .trash__button {
   border: none!important;
   background: none!important;
+  margin-top: 5px;
+  margin-right: 10px;
   span {
-    color: black!important;
+    color: #57D9B7!important;
   }
+}
+
+.message__date {
+  color: white;
+  flex-direction: row-reverse;
+}
+
+@media only screen and (max-width:400px){
+  .message {
+    padding: 10px;
+  }
+  .message__avatar__isMe {
+    margin-right: -10px;
+  }
+}
+
+.message__button {
+  background-color:  #99FFCC;
+  border: none;
+}
+
+
+.ant-popover-inner-content {
+  background: #99FFCC;
 }

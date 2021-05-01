@@ -4,7 +4,14 @@ import  { Input,Button} from "antd";
 import './ChatInput.scss'
 import { UploadField } from '@navjobs/upload'
 
-import {AudioOutlined, CameraOutlined, FrownOutlined, LoadingOutlined, SendOutlined} from '@ant-design/icons'
+import {
+    AudioMutedOutlined,
+    AudioOutlined,
+    CameraOutlined,
+    FrownOutlined, GitlabOutlined,
+    LoadingOutlined,
+    SendOutlined
+} from '@ant-design/icons'
 
 import { Picker } from 'emoji-mart'
 import UploadFiles from "../UploadFile/UploadFiles";
@@ -47,12 +54,12 @@ const ChatInput = (props) => {
                     {props.emojiPickerVisible && <div className="chat-input__emoji-picker">
                         <Picker onSelect={(emojiTag) =>setEmoji(emojiTag)} set='apple' />
                     </div>}
-                    <Button onClick={props.toggleEmojiPicker} type="link"   icon={<FrownOutlined />} />
+                    <i  onClick={props.toggleEmojiPicker} type="link"><GitlabOutlined /></i>
                 </div>
-                <Input onChange={e => props.setValue(e.target.value)}
+                <Input  onChange={e => props.setValue(e.target.value)}
                        value={props.value}
                        onKeyUp={SendMessage}
-                       size='large' placeholder="Введите сообщение"  style={{ width: '100%' }} />
+                       size='large' placeholder="Введите сообщение"  style={{ width: '100%',backgroundColor:"#2A2A2A",color:"#fff"}} />
                 <div className="chat-input__actions">
                     <div>
                         <UploadField
@@ -65,17 +72,16 @@ const ChatInput = (props) => {
                             }}
                         >
                             <div>
-                                <Button type="link" size='large'  icon={<CameraOutlined />} onClick />
+                                <i  type="link" size='large' onClick><CameraOutlined /></i>
                             </div>
 
                         </UploadField>
                     </div>
                     {isLoading ? <LoadingOutlined /> :
                     isRecording || props.value || attachments.length  ? <div>
-                        <button onClick={onStopRecording}>Стоп машина</button>
-                        <Button  onClick={handleSendMessage}  icon={<SendOutlined />} />
+                        <i  onClick={handleSendMessage} type="link"><SendOutlined /></i>
                     </div> :<div>
-                        <Button onClick={handleStartRecording} type="link"  icon={<AudioOutlined />} />
+                        <i  onClick={handleStartRecording} type="link"><AudioOutlined /></i>
                     </div>
                     }
                 </div>

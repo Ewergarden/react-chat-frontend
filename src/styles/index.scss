@@ -27,7 +27,10 @@ html,body{
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: #f4f7fd;
+  background-color: #DDF7F1;
+  ::-webkit-scrollbar { width: 7px; height: 3px;}
+  ::-webkit-scrollbar-track-piece { background-color: black; color: black;}
+  ::-webkit-scrollbar-thumb { height: 70px; background-color: #99FFCC; color: black; border-radius: 3px;}
 }
 input,button,textarea{font-family:inherit;}
 

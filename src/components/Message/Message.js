@@ -3,7 +3,7 @@ import reactStringReplace from "react-string-replace"
 import './Messag.scss';
 import  formatDistanceToNow from 'date-fns/formatDistanceToNow/index.js'
 import { parseISO } from 'date-fns'
-import {ru} from "date-fns/locale/ru"
+
 import classNames from 'classnames'
 import IconRead from "../IconRead/IconRead";
 import  { Popover,Button} from 'antd';
@@ -13,8 +13,10 @@ import pause from 'assets/pause.svg';
 import {convertCurrentTime} from "../../utils/helpers";
 import {DeleteOutlined, EyeOutlined} from '@ant-design/icons'
 import {Emoji} from "emoji-mart";
+const ru = require('date-fns/locale/ru')
 
-export const AudioMessage = ({item}) => {
+export const AudioMessage = ({item,isMe}) => {
+
 
 
 
@@ -55,8 +57,8 @@ export const AudioMessage = ({item}) => {
         }
     }
     return (
-        <div className={"message__audio"}>
-            <div className={"message__buble"} >
+        <div className={classNames("message__audio", {"message__audio-me" : isMe})}>
+            <div className={classNames("message__buble",{"message__buble-me": isMe})} >
             <audio src={item.url} ref={audioElem}  preload={'auto'}/>
             <div className="message__audio-progress" style={{width: progress + '%' }}>
             </div>
@@ -96,10 +98,10 @@ export const Message = ({setPreviewImage,user,createdAt,text,isTyping,isMe,attac
     const renderAttachment = (item) => {
         if(item.ext !== "webm") {
             return (<div  className="message__attachments-item">
-                <EyeOutlined onClick={() => {setPreviewImage(item.url)}} />
+                <i className="message__attachments-item-prev"><EyeOutlined onClick={() => {setPreviewImage(item.url)}} /></i>
                 <img src={item.url}/>
             </div>)} else {
-                return  <AudioMessage item={item} />
+                return  <AudioMessage item={item} isMe={isMe} />
         }
     }
 
@@ -107,8 +109,8 @@ export const Message = ({setPreviewImage,user,createdAt,text,isTyping,isMe,attac
 
 
     const content = (
-        <div>
-            <button onClick={onRemoveMessage}>Удалить</button>
+        <div >
+            <button  className="message__button" onClick={onRemoveMessage}>Удалить</button>
         </div>
     );
 
@@ -121,39 +123,31 @@ export const Message = ({setPreviewImage,user,createdAt,text,isTyping,isMe,attac
     return (
         <div className={classNames('message', {'message__isMe': isMe , 'message__is-typing' : isTyping, 'message__image-one' : !isAudio() && attachments && attachments.length === 1 && !text, "message__is-audio" : isAudio() })}>
 
-            <div className={'message__avatar'}>
-                {getAvatar(avatar)}
+            <div className={ classNames( 'message__avatar',{'message__avatar__isMe': isMe})}>
+                {getAvatar(user.avatar)}
             </div>
-            <div>
+            <div className={"message__wrapper:"}>
+
                 <div className={classNames('message__content', {'message__isMe-content': isMe})}>
                     {(text || isTyping) && (
                         <div className={classNames('message__buble', {'message__buble-me': isMe})}>
                             {text && <p className={"message__text"}>{reactStringReplace(text,/:(.+?):/g,(match,i)=> (
                                 <Emoji emoji={match} set='apple' size={16} />
                             ))}</p>}
-                            {isTyping && <div className="message__typing">
-                                <span className="dot one"></span>
-                                <span className="dot two"></span>
-                                <span className="dot three"></span>
-                            </div>}
-                            {
-                                false &&  <AudioMessage audio={null} />
-                            }
 
 
                         </div>)}
-                    <Popover placement="top"  content={content} trigger="click">
-                        <Button className='trash__button'><DeleteOutlined /></Button>
-                    </Popover>
+                    {attachments &&(
+                        <div className="message__attachments">
+                            {attachments.map(item => renderAttachment(item))}
+                        </div>)}
+                    {isMe ? <Popover className='trash__pover' style={{background:"#000"}}  placement="top"  content={content} trigger="click">
+                        <i  className='trash__button'><DeleteOutlined style={{color:"#fff"}} /></i>
+                </Popover> : <></>}
                 </div>
 
-                {createdAt && <span className={'message__date'}>{formatDistanceToNow(parseISO(createdAt),{addSuffix: true},{locale: ru})}</span>}
+                {createdAt && <span className={'message__date'}>{formatDistanceToNow(parseISO(createdAt),{addSuffix: true,locale: ru})}</span>}
             </div>
-
-                {attachments &&(
-                    <div className="message__attachments">
-                        {attachments.map(item => renderAttachment(item))}
-                </div>)}
             {/*<IconRead  isReaded={props.isReaded}/>*/}
         </div>
     );

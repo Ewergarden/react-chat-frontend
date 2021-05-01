@@ -3,9 +3,22 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  color: white;
+}
+.preview__image {
+  max-width: 400px;
+  height: 50vh;
 }
 
-.chat__dialog-message {
-
-  overflow: auto;
+@media only screen and (max-width:400px){
+  .preview__image {
+    max-width: 250px;
+    height: 35vh;
+  }
+  .preview {
+   width: 280px!important;
+    height: 35vh;
+   align-items: center;
+    justify-content: center;
+  }
 }

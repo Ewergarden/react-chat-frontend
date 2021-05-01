@@ -11,16 +11,17 @@ import {Modal} from "antd"
 
 
 const MessageItem = ({isTyping,setPreviewImage,previewImage,blockref,LayoutHeight,isLoading,items, user,onRemoveMessage}) => {
-    const antIcon = <LoadingOutlined style={{ fontSize: '80px' }} spin />
+    const antIcon = <LoadingOutlined style={{ color:"#fff", fontSize: '80px' }} spin />
     return ( <div ref={blockref} className="chat__dialog-message" style={{"height": `calc(100% - ${LayoutHeight}px )`}}><div className={classNames( {'message__loading' : isLoading })}>
             {
-                isLoading ? (<Spin indicator={antIcon} tip="Загрузка сообщений"/>) : items !=0 && !isLoading ? (
+
+                isLoading ? (<Spin size="large"  style={{color:"#fff"}} indicator={antIcon} tip="Загрузка сообщений"/>) : items !=0 && !isLoading ? (
                 items.map(item => <Message isTyping={isTyping} setPreviewImage={setPreviewImage} {...item} onRemoveMessage={ onRemoveMessage.bind(this, item._id)} isMe={user && user._id === item.user._id}/>)) : (<Empty description='Нет сообщений'/>)
             }
-        <Modal footer={null} visible={!!previewImage}  onCancel={() => {
+        <Modal className="preview" style={{maxWidth: "450px"}} footer={null} visible={!!previewImage}  onCancel={() => {
             setPreviewImage(null)
         }}>
-            <img src={previewImage} style={{width: "100%",height:"70vh"}} alt="Preview image"/>
+            <img src={previewImage} className="preview__image" alt="Preview image"/>
         </Modal>
 
     </div></div>)

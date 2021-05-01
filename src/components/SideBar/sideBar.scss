@@ -1,0 +1,41 @@
+.chat__dialog_ico {
+  color: white;
+  font-size: 17px;
+}
+
+.chat__sidebar {
+  position: relative;
+}
+
+.chat__sidebar-modal-select {
+  width: 422px;
+  margin-bottom: 20px;
+}
+
+.ant-modal-content {
+
+  max-width: 470px;
+}
+.chat__sidebar-modal-wrapper {
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width:510px){
+  .ant-modal-content {
+    max-width: 250px;
+    position: absolute!important;
+
+
+  }
+  .chat__sidebar-modal-select {
+    width: 202px;
+  }
+
+}
+
+@media only screen and (max-width:350px){
+  .ant-modal-content {
+      left: -25%;
+  }
+
+}

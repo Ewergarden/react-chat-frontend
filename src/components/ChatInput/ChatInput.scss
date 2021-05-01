@@ -1,7 +1,11 @@
 .chat__dialog-input {
     margin: 20px;
+    .chat__smile-ico {
+
+    }
     &-area {
-        border: 1px solid #f7f7f7;
+        border: none;
+        border-radius: 10px;
     }
     & > div:first-of-type {
         display: flex;
@@ -10,20 +14,25 @@
         padding: 15px 40px 0px;
     }
     .chat-input__smile-btn {
-        opacity: 0.5;
+        opacity: 0.8;
         font-size: 20px;
+        margin-right: 10px;
+        margin-top: 7px;
         cursor: pointer;
+        color: #99FFCC;
         &:hover {
             opacity: 1;
         }
     }
     .chat-input__actions {
-        opacity: 0.5;
+        opacity: 0.8;
+        color: #99FFCC;
         cursor: pointer;
         display: flex;
-        font-size: 20px;
+        font-size: 16px;
         align-items: center;
         margin-right: 5px;
+        margin-left: 10px;
         width: 60px;
         justify-content: space-between;
         &:hover {
@@ -36,6 +45,7 @@
         border: 0;
         box-shadow: none;
         word-break: break-all!important;
+
     }
 }
 

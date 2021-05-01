@@ -6,7 +6,7 @@ import actions from "../redux/actions/DialogsAction";
 
 import socket from "./../core/socket";
 
-const DialogsContainer = ({items, fetchDialogs, setCurrentDialog}) => {
+const DialogsContainer = ({items,showMenu, fetchDialogs, setCurrentDialog,userReducer}) => {
 
     const onNewDialog = () => {
         fetchDialogs();
@@ -46,8 +46,10 @@ const DialogsContainer = ({items, fetchDialogs, setCurrentDialog}) => {
 
 
 
-    return <Dialogs items={filtred} onSearch={onChangeInput} inputValue={inputValue} setCurrentDialog={setCurrentDialog}/>
+    return <Dialogs showMenu={showMenu} user={userReducer} items={filtred} onSearch={onChangeInput} inputValue={inputValue} setCurrentDialog={setCurrentDialog}/>
 }
 
 export default connect(
-    ({dialogReduser}) => dialogReduser, actions)(DialogsContainer);
+    ({dialogReduser,userReducer}) => ({userReducer:userReducer.data,items:dialogReduser.items,fetchDialogs:dialogReduser.fetchDialogs,setCurrentDialog:dialogReduser.setCurrentDialog})
+
+    , actions)(DialogsContainer);

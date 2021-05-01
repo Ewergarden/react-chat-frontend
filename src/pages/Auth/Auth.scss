@@ -3,47 +3,67 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  background-color: #383F44;
     .block {
       width: 430px;
     }
+  @media only screen and (max-width:420px){
+    .block {
+      max-width: 300px;
+      padding: 20px 0px;
+
+    }
+  }
   &__link-registered {
     text-align: center;
   }
   &__top {
     text-align: center;
-    margin-bottom: 30px;
+
     h2 {
       font-size: 28px;
-      margin-bottom: 5px;
+      margin-bottom: 7px;
+      color: white;
     }
     p {
       font-size: 18px;
       line-height: 21px;
       letter-spacing: 0.1px;
-      opacity: 0.5;
+      opacity: 0.8;
+      color: white;
+    }
+    @media only screen and (max-width:434px){
+      p {
+        font-size: 16px;
+      }
     }
   }
   button {
     width: 100%;
     display: block;
     height: 40px;
+    background-color: #57D9B7;
   }
   Form {
     margin-left: 2px;
   }
   Form.Item {
     text-align: center;
+    Item {
+      background-color: #2A2A2A;
+    }
   }
 }
 
 .auth__link-registered {
   text-align: center;
   display: block;
-  color: black;
+  color: #fff;
   opacity: 0.5;
 }
 
 .auth__sucess-block {
+
   height: 380px;
   display: flex;
   flex-direction: column;
@@ -56,4 +76,8 @@
   p {
     color: dimgray;
   }
+}
+
+.form__item input {
+  background-color: #2A2A2A!important;
 }
